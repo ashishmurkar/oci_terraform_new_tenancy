@@ -1,0 +1,2 @@
+# oci_terraform_new_tenancy
+OCI_terraform_codes
