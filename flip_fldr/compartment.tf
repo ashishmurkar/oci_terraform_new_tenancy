@@ -1,5 +1,5 @@
 resource "oci_identity_compartment" "flip_app" {
-  compartment_id = "ocid1.tenancy.oc1..aaaaaaaagsgs3dyg4jrtn4jjnb33dqcbqfijfjq64vd2gaubi5j3cosg7uoq"
+  compartment_id = var.tenancy_ocid
   name           = "flip_app"
   description    = "Compartment for flip application resources"
   
@@ -7,7 +7,7 @@ resource "oci_identity_compartment" "flip_app" {
   }
 
 resource "oci_identity_compartment" "flip_network" {
-  compartment_id = "ocid1.compartment.oc1..aaaaaaaabyjbyysdh3su2a2fgtdt5iuycmt4xxgvhalfrev3wlyi3e4ahpoa"
+  compartment_id = oci_identity_compartment.flip_app.id
   name           = "flip_network"
   description    = "Compartment for flip network resources"
 
@@ -15,7 +15,7 @@ resource "oci_identity_compartment" "flip_network" {
   }
 
   resource "oci_identity_compartment" "flip_computeandstorage" {
-  compartment_id = "ocid1.compartment.oc1..aaaaaaaabyjbyysdh3su2a2fgtdt5iuycmt4xxgvhalfrev3wlyi3e4ahpoa"
+  compartment_id = oci_identity_compartment.flip_app.id
   name           = "flip_computeandstorage"
   description    = "Compartment for flip compute and storage resources"
 
